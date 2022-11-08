@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const mongodburl = require(__dirname + "/mongodburl.js");
 const _ = require("lodash");
 
 const app = express();
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-suhas:Test123@cluster0.warzwmd.mongodb.net/todolistDB");
+mongoose.connect(mongodburl());
 
 const itemsSchema = new mongoose.Schema({
   name: String
